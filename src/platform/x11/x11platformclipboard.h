@@ -42,18 +42,13 @@ public:
 protected:
     void onChanged(int mode) override;
 
-private slots:
-    void onClipboardChanged();
-    void onSelectionChanged();
-
 private:
-    bool waitIfSelectionIncomplete();
-    void checkAgain();
+    void check();
 
     QStringList m_formats;
 
-    QTimer m_timerCheckClipboard;
-    QTimer m_timerCheckSelection;
+    QTimer m_timerCheckAgain;
+    int m_checkAgainIntervalMs = 0;
 
     QVariantMap m_clipboardData;
     QVariantMap m_selectionData;
